@@ -1,9 +1,6 @@
 package com.bcurry.rednet.neuralnet.functional;
 
 import java.util.Optional;
-
-import javax.annotation.PostConstruct;
-
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +12,7 @@ public class SimpleActivationFunction implements ActivationFunction {
 	// Etotal outO1 derivative = .74136507
 	//
 
-	@PostConstruct
+	// @PostConstruct
 	public void testActFunc() {
 		System.out.println("Calculating test input");
 		Optional<Double> output = calculateOutput(1.1059095967, 1);
@@ -27,7 +24,7 @@ public class SimpleActivationFunction implements ActivationFunction {
 
 	}
 
-	@PostConstruct
+	// @PostConstruct
 	public void testFunc2() {
 		double target = .01;
 		double net = 1.105905967;

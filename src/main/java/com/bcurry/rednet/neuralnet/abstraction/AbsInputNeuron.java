@@ -13,13 +13,13 @@ public class AbsInputNeuron extends AbsNeuron implements InputNeuron {
 
 	@Override
 	public void passInput(double d) {
-		System.out.println("Passed input to absinputneuron");
+		// System.out.println("Passed input to absinputneuron");
 		this.input = Optional.of(d);
 	}
 
 	@Override
 	public Optional<Double> calculateOutput() {
-		System.out.println("Calculating output from absinputneuron");
+		// System.out.println("Calculating output from absinputneuron");
 		return input;
 	}
 

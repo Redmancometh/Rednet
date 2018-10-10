@@ -2,7 +2,6 @@ package com.bcurry.rednet.neuralnet.abstraction;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -55,24 +54,22 @@ public abstract class AbsNeuronLayer implements NeuronLayer {
 
 			});
 			data.addNeuron(n);
-			System.out.println("Put neuron " + n.getId() + " in layer " + this.getId());
+			// System.out.println("Put neuron " + n.getId() + " in layer " + this.getId());
 			layerNeurons.put(n.getId(), n);
 		}
 	}
 
-	@Override
-	public double propogateTo(double target) {
-		// TODO: This is probably going to change in case I want to change my summing
-		// functions
-		getLayerNeurons().values().stream().forEach((neuron) -> {
-			neuron.calculateOutput();
-		});
-		double sum = getLayerNeurons().values().stream().mapToDouble((neuron) -> neuron.calculateOutput().get()).sum();
-		Optional<Double> output = actFunc.calculateOutput(sum, getBias().getBias());
-		System.out.println("Final output in OL: " + output);
-
-		return output.get();
-	}
+	/**
+	 * @Override public double propogateTo(double target) { // TODO: This is
+	 *           probably going to change in case I want to change my summing //
+	 *           functions getLayerNeurons().values().stream().forEach((neuron) -> {
+	 *           neuron.calculateOutput(); }); double sum =
+	 *           getLayerNeurons().values().stream().mapToDouble((neuron) ->
+	 *           neuron.calculateOutput().get()).sum(); Optional<Double> output =
+	 *           actFunc.calculateOutput(sum, getBias().getBias()); //
+	 *           System.out.println("Final output in OL: " + output); return
+	 *           output.get(); }
+	 **/
 
 	@Override
 	public void connectTo(NeuronLayer layer) {

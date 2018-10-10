@@ -34,7 +34,7 @@ public abstract class AbsNeuralNetwork implements NeuralNetwork {
 	 */
 	protected Map<UUID, NeuronLayer> hiddenLayers = new ConcurrentHashMap();
 
-	protected List<UUID> orderedLayers = new CopyOnWriteArrayList();
+	protected List<NeuronLayer> orderedLayers = new CopyOnWriteArrayList();
 	/**
 	 * 
 	 * Neural network output layer
@@ -42,7 +42,7 @@ public abstract class AbsNeuralNetwork implements NeuralNetwork {
 	 */
 	protected OutputLayer outputLayer;
 
-	public List<UUID> orderedLayers() {
+	public List<NeuronLayer> orderedLayers() {
 		return orderedLayers;
 	}
 
@@ -64,17 +64,19 @@ public abstract class AbsNeuralNetwork implements NeuralNetwork {
 
 	@Override
 	public void makeConnections() {
-		NeuronLayer layerOne = hiddenLayers.get(orderedLayers.get(0));
-		layerOne.getNeurons()
-				.forEach((neuron) -> System.out.println("Connecting " + neuron.getId() + " to input neuron"));
+		NeuronLayer layerOne = hiddenLayers.get(orderedLayers.get(0).getId());
+		/*
+		 * layerOne.getNeurons() .forEach((neuron) -> System.out.println("Connecting " +
+		 * neuron.getId() + " to input neuron"));
+		 */
 		inputLayer.connectTo(layerOne);
 		for (int x = 0; x < orderedLayers.size(); x++) {
-			NeuronLayer hiddenLayerFirst = hiddenLayers.get(orderedLayers.get(x));
+			NeuronLayer hiddenLayerFirst = hiddenLayers.get(orderedLayers.get(x).getId());
 			if (x == (orderedLayers.size() - 1)) {
 				hiddenLayerFirst.connectTo(outputLayer);
 				return;
 			}
-			NeuronLayer hiddenLayerNext = hiddenLayers.get(orderedLayers.get(x + 1));
+			NeuronLayer hiddenLayerNext = hiddenLayers.get(orderedLayers.get(x + 1).getId());
 			hiddenLayerFirst.connectTo(hiddenLayerNext);
 		}
 

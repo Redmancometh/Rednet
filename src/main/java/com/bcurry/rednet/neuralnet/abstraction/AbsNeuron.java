@@ -63,7 +63,8 @@ public abstract class AbsNeuron implements Neuron {
 
 	@Override
 	public void addFrom(Neuron from, NeuronConnection connection) {
-		System.out.println("Connection from " + from.getId() + " to " + this.getId());
+		// System.out.println("Connection from " + from.getId() + " to " +
+		// this.getId());
 		this.connectionsIn.put(from.getId(), connection);
 	}
 

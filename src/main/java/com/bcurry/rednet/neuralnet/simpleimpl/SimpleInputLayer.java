@@ -28,4 +28,9 @@ public class SimpleInputLayer extends InputLayer {
 	public BiasProvider getBias() {
 		return null;
 	}
+
+	@Override
+	public void backPropogate(double target) {
+		
+	}
 }

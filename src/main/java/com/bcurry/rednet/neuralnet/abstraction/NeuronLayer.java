@@ -22,6 +22,8 @@ public interface NeuronLayer {
 	 */
 	void connectTo(NeuronLayer layer);
 
+	void backPropogate(double target);
+
 	/**
 	 * Gets all the neurons for this layer. This is unfiltered and will return both
 	 * connected and unconnected neurons.
@@ -29,14 +31,6 @@ public interface NeuronLayer {
 	 * @return
 	 */
 	Collection<Neuron> getNeurons();
-
-	/**
-	 * Have every neuron in the NeuronLayer calculate their outputs, so the next
-	 * layer can get them.
-	 * 
-	 * @return
-	 */
-	public double propogateTo(double target);
 
 	public BiasProvider getBias();
 

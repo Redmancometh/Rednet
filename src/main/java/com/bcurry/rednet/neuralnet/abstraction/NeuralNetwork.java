@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import com.bcurry.rednet.mediator.events.ForwardPropogationCompleteEvent;
-
 public interface NeuralNetwork {
 
 	void populate(int layers, int connectionsPerLayer);
@@ -22,8 +20,8 @@ public interface NeuralNetwork {
 
 	void takeInput(double input, double target);
 
-	public List<UUID> orderedLayers();
+	public List<NeuronLayer> orderedLayers();
 
-	void backPropogate(ForwardPropogationCompleteEvent event);
+	void backPropogate(double target);
 
 }
